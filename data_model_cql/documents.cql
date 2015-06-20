@@ -46,7 +46,7 @@ CREATE TABLE raw_documents (
   harvester_log map<text,timestamp>, -- move into its own table at some stage
 
   -- Normalized
-  uris text,
+  uris map<text,text>,
   title text,
   
   --TODO: Contributors cannot be indexed. Later stage: Move _Contributor_ as a full fledged attribute.
