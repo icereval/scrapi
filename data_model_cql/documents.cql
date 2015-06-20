@@ -3,6 +3,7 @@ USE sarlacc;
 DROP TABLE doc_to_versions;
 DROP TABLE dates;
 DROP TABLE raw_documents;
+DROP TABLE doc_to_properties;
 
 CREATE TABLE doc_to_versions (
   source text,
@@ -15,6 +16,17 @@ CREATE TABLE doc_to_versions (
   PRIMARY KEY ((source, doc_id), version)
   )
 WITH CLUSTERING ORDER BY (version ASC);
+
+CREATE TABLE doc_to_properties (
+  source text,
+  doc_id text,
+  
+  timepoint timestamp,
+  prop_list map<text, text>,
+  
+  PRIMARY KEY ((source, doc_id), timepoint)
+  )
+WITH CLUSTERING ORDER BY (timepoint ASC);
 
 CREATE TABLE dates (
   date text,
