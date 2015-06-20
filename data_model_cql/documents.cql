@@ -36,7 +36,7 @@ CREATE TABLE dates (
 
 CREATE TABLE raw_documents (
   source text,
-  date text, // 'DD-MM-YYYY'
+  date text, // iso
   
   doc_id text,
   version timeuuid, // internal to COS
@@ -52,9 +52,9 @@ CREATE TABLE raw_documents (
   --TODO: Contributors cannot be indexed. Later stage: Move _Contributor_ as a full fledged attribute.
   --nContributors is i \in [0..n] and each key in map is prefixed with "i_" string. This is a hack to flatten the list, see the TODO.
   nContributors int,
-  contributors map<text,text>, -- 
+  contributors map<text,text>,
   
-  providerUpdatedDateTime timestamp,
+  providerUpdatedDateTime text,
 
   description text,
   freeToRead boolean,
