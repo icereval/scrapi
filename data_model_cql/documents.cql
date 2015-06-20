@@ -50,7 +50,7 @@ CREATE TABLE raw_documents (
   title text,
   
   --TODO: Contributors cannot be indexed. Later stage: Move _Contributor_ as a full fledged attribute.
-  --nContributors is i \in [0..n] and each key in map is prefixed with "i_" string. This is a hack, see the TODO.
+  --nContributors is i \in [0..n] and each key in map is prefixed with "i_" string. This is a hack to flatten the list, see the TODO.
   nContributors int,
   contributors map<text,text>, -- 
   
