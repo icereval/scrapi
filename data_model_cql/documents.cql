@@ -15,8 +15,7 @@ CREATE TABLE doc_to_versions (
   pub_date text,
   short_harvested_date text,
   
-  bytes blob,
-  -- add anything else needed to construct the delta.
+  raw_doc_record blob,
   
   PRIMARY KEY ((source, doc_id), version)
   )
@@ -74,6 +73,8 @@ CREATE TABLE documents (
   
   nContributors int, -- is i \in [0..n] and each key in map is prefixed with "i_" string. This is a hack to flatten the list.
   contributors map<text,text>,
+  
+  citations map<text, text>
   
   publisher map<text,text>,
   
