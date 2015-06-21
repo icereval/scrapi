@@ -3,9 +3,9 @@ USE sarlacc;
 DROP TABLE doc_to_versions;
 DROP TABLE contributor_to_docs;
 DROP TABLE documents;
-DROP TABLE publisher_to_docs;
 DROP TABLE harvester_log;
 DROP TABLE pub_venue_to_pub_dates;
+DROP TABLE pub_venue_to_docs;
 
 CREATE TABLE doc_to_versions (
   source text,
@@ -74,9 +74,9 @@ CREATE TABLE documents (
   nContributors int, -- is i \in [0..n] and each key in map is prefixed with "i_" string. This is a hack to flatten the list.
   contributors map<text,text>,
   
-  citations map<text, text>
+  citations map<text, text>,
   
-  publisher map<text,text>,
+  publishers map<text,text>,
   
   abstract text, -- description
   tags set<text>,
@@ -114,4 +114,4 @@ CREATE TABLE harvester_log (
   
   PRIMARY KEY ((source, short_harvested_date), doc_id, version)
 )
-WITH CLUSTERING ORDER BY (source ASC);
+WITH CLUSTERING ORDER BY (doc_id ASC);
